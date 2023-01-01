@@ -1,0 +1,66 @@
+body{
+    font-family: "Quicksand", sans-serif;
+    margin: 0px;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 60px;
+    position: absolute;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+
+ul{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#logo a{
+    padding: 10px;
+    font-family: "O", sans-serif;
+    font-size: 50px;
+    color: rgb(160, 245, 238);
+    text-decoration: none;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 1px black;
+}
+
+header ul{
+    display: flex;
+}
+
+header li{
+    margin-left: 20px;
+}
+header a{
+    color: rgb(160, 245, 238);
+    font-size: 18px;
+    text-decoration: none;
+    padding: 12px;
+    border-radius: 6px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.25);
+}
+header li a:hover{
+    color: rgb(56, 56, 56);
+    background-color: rgb(8, 255, 234); 
+}
+
+footer{
+    background: linear-gradient(70deg, rgb(24,24,24), rgb(25,29,29));
+    padding: 35px;
+}
+footer h5{
+    color: rgb(160, 245, 238);
+    font-family: "Quicksand", sans-serif;
+    font-style: normal;
+    display: flex;
+    font-weight: 120;
+    margin-top: 5px;
+    margin-bottom: 8px;
+    justify-content: center;
+}
