@@ -165,7 +165,7 @@ et après on appel la fonction **random()** dans le input tag du **Code** pour l
   <div class="form-group row">
     <label for="code" class="col-5 col-form-label" style="font-weight: bold;">Code :</label> 
     <div class="col-7">
-      <input id="code" name="code" type="text" required="required" class="form-control" value="<%=random() %>">
+    <input id="code" name="code" type="text" required="required" class="form-control" value="<%=random() %>">
     </div>
   </div>
   <div class="form-group row">
@@ -248,28 +248,27 @@ public class SaveEtudiant extends HttpServlet {
     }
 
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+    throws ServletException, IOException {
 		ArrayList<Etudiant> listEtd = new ArrayList<Etudiant>();
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection cnn;
-            try {
-            	cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbetudiants", "root", "");
-    			
-    			PreparedStatement ps = (PreparedStatement) cnn.prepareStatement("select * from tetudiant");
-    			ResultSet rs = ps.executeQuery();
-    			while (rs.next()) {
-    				Etudiant e = new Etudiant();
-    				e.setCode(rs.getString(1));
-    				e.setNom(rs.getString(2));
-    				e.setPrenom(rs.getString(3));
-    				e.setAge(rs.getInt(4));
-    				e.setVille(rs.getString(5));
-    				listEtd.add(e);
-    			}
-    			rs.close();
-    	         
-    			cnn.close();
+          try {
+            cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbetudiants", "root", "");
+            PreparedStatement ps = (PreparedStatement) cnn.prepareStatement("select * from tetudiant");
+    			  ResultSet rs = ps.executeQuery();
+    			  while (rs.next()) {
+              Etudiant e = new Etudiant();
+              e.setCode(rs.getString(1));
+              e.setNom(rs.getString(2));
+              e.setPrenom(rs.getString(3));
+              e.setAge(rs.getInt(4));
+              e.setVille(rs.getString(5));
+              listEtd.add(e);
+    			  }
+    			    rs.close();
+    	        cnn.close();
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -281,7 +280,8 @@ public class SaveEtudiant extends HttpServlet {
 	}
 
 
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+    throws ServletException, IOException {
 		String code = request.getParameter("code");
 		String nom = request.getParameter("nom");
 		String prenom = request.getParameter("prenom");
@@ -292,10 +292,10 @@ public class SaveEtudiant extends HttpServlet {
 			 Class.forName("com.mysql.jdbc.Driver");
 			 Connection cnn;
 			 try {
-				 cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbetudiants", "root", "");
+        cnn = DriverManager.getConnection("jdbc:mysql://localhost:3306/dbetudiants", "root", "");
 			 	java.sql.Statement stmt = cnn.createStatement();
-			 	String sql = "insert into tetudiant VALUES('" + code + "','" + nom + "','" + prenom + "','" + age
-					 + "','" + ville + "')";
+			 	String sql = "insert into tetudiant VALUES('" + code + "','" + nom 
+        + "','" + prenom + "','" + age + "','" + ville + "')";
 			 	stmt.executeUpdate(sql);
 			 	cnn.close();
 			 } catch (SQLException e) {
@@ -360,6 +360,7 @@ public class SaveEtudiant extends HttpServlet {
 ```
 ![img](m6.png)
 
+> **DeleteEtudiant**
  ```java
 package Metier;
 
@@ -383,12 +384,13 @@ public class DeleteEtudiant extends HttpServlet {
         super();
     }
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+  throws ServletException, IOException {
 	if(request.getParameter("cne")!=null) {	 
       try {Class.forName("com.mysql.jdbc.Driver");
           Connection cnn;
           try {
-            cnn=DriverManager.getConnection("jdbc:mysql://localhost:3306/dbetudiants","root",""); 
+          cnn=DriverManager.getConnection("jdbc:mysql://localhost:3306/dbetudiants","root",""); 
           String sql="DELETE FROM tetudiant WHERE code = ?";
           
             PreparedStatement ps;
@@ -396,7 +398,8 @@ public class DeleteEtudiant extends HttpServlet {
             ps = (PreparedStatement) cnn.prepareStatement(sql);
             ps.setString(1,request.getParameter("cne"));
             ps.executeUpdate();
-            response.getWriter().println("L'etudiant "+request.getParameter("cne")+" a été supprimé avec succès !" );
+            response.getWriter().println("L'etudiant "+request.getParameter("cne")+
+            " a été supprimé avec succès !" );
           } catch (SQLException e) {
             e.printStackTrace();
           }

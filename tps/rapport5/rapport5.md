@@ -53,14 +53,17 @@ ___
 ```html
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:h="http://java.sun.com/jsf/html"
-    xmlns:f="http://java.sun.com/jsf/core">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Index</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <link rel="stylesheet" 
+    href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" 
+    crossorigin="anonymous" />
 </head>
 
 <body>
@@ -114,8 +117,10 @@ ___
      ```
   * Le montant ne dépaase pas 20000 dh: 
      ``` html 
-     <h:inputText id="montant" required="true" class="form-control" requiredMessage="Veuillez saisir le Montant">
+     <h:inputText id="montant" required="true" class="form-control" 
+                  requiredMessage="Veuillez saisir le Montant">
 				<f:validateDoubleRange maximum="20000" />
+      </h:inputText>
      ```
   * Les messages d'erreur affiché par un style bootstrap, on ajoute le tag suivant sous chaque input tag: 
      ``` html 
@@ -193,7 +198,8 @@ public class Commande {
     this.statusL = statusL;
   }
   public Commande() { super(); }
-  public Commande(int code, Date dateCom, Float montant, String modeP, String statusP, String modeL, String statusL) {
+  public Commande(int code, Date dateCom, Float montant, String modeP, 
+  String statusP, String modeL, String statusL) {
     super();
     this.code = code;
     this.dateCom = dateCom;
@@ -231,7 +237,8 @@ public class Commande {
 * Créont le fichier de mapping **Commande.hbm.xml** a l'aide de Hibernate.
   ```xml
   <?xml version="1.0"?>
-  <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+  <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+  "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 
   <hibernate-mapping>
       <class name="Commande" table="Table_COMMANDE">
