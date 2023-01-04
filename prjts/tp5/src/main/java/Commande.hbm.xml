@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 8 d?c. 2022 15:10:56 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="Commande" table="Table_COMMANDE">
+        <id name="code" type="int">
+            <column name="CODE" />
+            <generator class="assigned" />
+        </id>
+        <property name="dateCom" type="java.util.Date">
+            <column name="dateCom" />
+        </property>
+        <property name="montant" type="java.lang.Float">
+            <column name="montant" />
+        </property>
+        <property name="modeP" type="java.lang.String">
+            <column name="modeP" />
+        </property>
+        <property name="statusP" type="java.lang.String">
+            <column name="statusP" />
+        </property>
+        <property name="modeL" type="java.lang.String">
+            <column name="modeL" />
+        </property>
+        <property name="statusL" type="java.lang.String">
+            <column name="statusL" />
+        </property>
+    </class>
+</hibernate-mapping>

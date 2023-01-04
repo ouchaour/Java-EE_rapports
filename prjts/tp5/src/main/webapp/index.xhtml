@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core">
+
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+ <title>Index</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+</head>
+<body>
+	<div class="container mt-4" style="background-color:rgb(164, 199, 228)">
+<h:form>
+<h:panelGrid columns="3" class="table tab-content" >
+	<f:facet name="header"> Informations Commande</f:facet>
+
+	<h:outputText value="Date *" />
+	<h:inputText id="date" required="true" class="form-control" requiredMessage="Veuillez saisir la date" value="#{commande.dateCom}">
+		<f:convertDateTime pattern="MM/dd/yyyy" />
+	</h:inputText>
+	<h:message for="date" class="alert-danger" />
+
+	<h:outputText value="Montant *" />
+	<h:inputText id="montant" required="true" class="form-control" value="#{commande.montant}" requiredMessage="Veuillez saisir le Montant" validatorMessage="• le CNE doit comprendre au moins 6 chiffres">
+		<f:validateLongRange maximum="20000" />
+	</h:inputText>
+	<h:message for="montant" class="alert-danger" />
+
+	<h:outputText value="Mode de paiement" />
+	<h:inputText id="modepaiement" required="true" class="form-control"
+		requiredMessage="Veuillez saisir Mode du paiement" maxlength="20" value="#{commande.modeP}" validatorMessage="• le CNE doit comprendre au moins 6 chiffres">
+		<f:validateLength minimum="6" />
+	</h:inputText>
+	<h:message for="modepaiement" class="alert-danger" />
+
+	<h:outputText value="Statut du paiement *" />
+	<h:inputText id="statuspaiement" class="form-control" value="#{commande.statusP}" />
+	<h:message for="statuspaiement" class="alert-danger" />
+
+	<h:outputText value="Mode de livraison" />
+	<h:inputText id="modelivraison" required="true" class="form-control"
+		requiredMessage="Veuillez saisir le Mode de livraison" maxlength="10" value="#{commande.modeL}" />
+	<h:message for="modelivraison" class="alert-danger" />
+
+	<h:outputText value="Statut de la livraison *" />
+	<h:inputText id="statuslivraison" class="form-control" value="#{commande.statusL}" />
+	<h:message for="statuslivraison" class="alert-danger" />
+
+	<f:facet name="footer">
+		<h:commandButton value="Valider" type="submit" action="#{etudiant.saveCommande}" class="btn btn-primary" />
+	</f:facet>
+</h:panelGrid>
+</h:form>
+</div>
+<div class="container mt-4" style="background-color:rgb(164, 199, 228)">
+<h:dataTable id="Commandes" value="#{commande.Cmnds}" var="cmnd" class="table table-hover">
+    <h:column>
+        <f:facet name="header">Code</f:facet>
+        <h:outputText value="#{cmnd.code}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">Date</f:facet>
+        <h:outputText value="#{cmnd.dateCom}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">Montant</f:facet>
+        <h:outputText value="#{cmnd.montant()}">
+            <f:convertNumber type="currency" currencySymbol="DH" />
+        </h:outputText>
+    </h:column>
+    <h:column>
+        <f:facet name="header">Mode de paiement</f:facet>
+        <h:outputText value="#{cmnd.modeP}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">statut du paiement </f:facet>
+        <h:outputText value="#{cmnd.statusP}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">Mode de livraison</f:facet>
+        <h:outputText value="#{cmnd.modeL}" />
+    </h:column>
+    <h:column>
+        <f:facet name="header">statut de la livraison </f:facet>
+        <h:outputText value="#{cmnd.statusL}" />
+    </h:column>
+    <h:column>
+    <f:facet name="header"><h:outputText value="Action"/></f:facet>
+        <h:commandButton value="Delete" action="#{cmnd.deleteCommande()}" class="btn btn-primary"/>
+    </h:column>
+</h:dataTable>
+</div>
+</body>
+</html>
